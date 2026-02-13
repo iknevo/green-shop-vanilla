@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>green-shop-vanilla</title>
+  </head>
+  <body>
+    <section class="px-4 md:px-20" id="header"></section>
+
+    <section class="bg-gray-50 px-4 py-10 md:px-20 container mx-auto">
+      <div
+        class="relative flex flex-col items-center justify-between rounded-md p-8 md:flex-row md:p-16"
+      >
+        <div class="max-w-xl text-center md:text-left">
+          <p class="mb-4 text-sm uppercase tracking-widest text-gray-500">
+            Welcome to GreenShop
+          </p>
+
+          <h1
+            class="text-4xl font-extrabold leading-tight text-gray-800 md:text-6xl"
+          >
+            LET’S MAKE A <br />
+            BETTER
+            <span class="text-green-600">PLANET</span>
+          </h1>
+
+          <p class="mt-6 text-gray-500 md:text-lg">
+            We are an online plant shop offering a wide range of cheap and
+            trendy plants. Use our plants to create a unique Urban Jungle. Order
+            your favorite plants!
+          </p>
+
+          <button
+            class="mt-8 rounded-md bg-green-600 px-8 py-3 font-semibold text-white transition hover:bg-green-700"
+          >
+            SHOP NOW
+          </button>
+        </div>
+
+        <div class="relative mt-10 md:mt-0">
+          <img
+            src="./src/assets/images/hero-img.png"
+            alt="Plant"
+            class="w-64 md:w-100"
+          />
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-green-600"></span>
+        <span class="h-2 w-2 rounded-full bg-gray-300"></span>
+        <span class="h-2 w-2 rounded-full bg-gray-300"></span>
+      </div>
+    </section>
+
+    <section class="max-md:px-4 py-12 container mx-auto">
+      <div
+        class="mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+      >
+        <div class="flex items-center gap-8 text-gray-600 font-medium">
+          <button
+            class="product-filter border-b-2 border-green-600 pb-1 text-green-600"
+            data-filter="all"
+          >
+            All Plants
+          </button>
+          <button
+            class="product-filter hover:text-green-600 transition pb-1"
+            data-filter="new"
+          >
+            New Arrivals
+          </button>
+          <button
+            class="product-filter hover:text-green-600 transition pb-1"
+            data-filter="sale"
+          >
+            Sale
+          </button>
+        </div>
+
+        <div class="text-sm text-gray-500">
+          Sort by:
+          <select
+            id="product-sort-select"
+            class="ml-2 border-none bg-transparent text-gray-700 focus:outline-none"
+          >
+            <option value="default">Default sorting</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" id="home-products">
+        <!-- <div class="group relative pb-10 md:pb-15"> -->
+        <!--   <div class="relative overflow-hidden bg-gray-50 p-6"> -->
+        <!--     <img -->
+        <!--       src="src/assets/images/product-1.png" -->
+        <!--       class="w-full object-cover transition duration-300 group-hover:scale-105" -->
+        <!--     /> -->
+        <!--   </div> -->
+        <!--   <h3 class="mt-4 text-gray-700">Angel Wing Begonia</h3> -->
+        <!--   <p class="font-semibold text-green-600">$169.00</p> -->
+        <!---->
+        <!--   <button -->
+        <!--     class="absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 gap-4 opacity-100 bg-green-600 text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer" -->
+        <!--   > -->
+        <!--     Order now -->
+        <!--   </button> -->
+        <!-- </div> -->
+      </div>
+
+      <div class="mt-16 flex justify-end gap-3">
+        <button class="h-8 w-8 rounded bg-green-600 text-white">1</button>
+        <button class="h-8 w-8 rounded border text-gray-600">2</button>
+        <button class="h-8 w-8 rounded border text-gray-600">3</button>
+        <button class="h-8 w-8 rounded border text-gray-600">4</button>
+        <button class="h-8 w-8 rounded border text-gray-600">></button>
+      </div>
+    </section>
+    <!-- ================= BLOG SECTION ================= -->
+    <section class="px-4 container mx-auto">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Our Blog Posts</h2>
+        <p class="mt-4 text-gray-500">
+          We are an online plant shop offering a wide range of cheap and trendy
+          plants.
+        </p>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Blog Card -->
+        <div class="bg-white">
+          <img
+            src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
+            class="h-52 w-full object-cover"
+          />
+          <div class="p-5">
+            <p class="text-xs text-green-600">
+              September 12 | Read in 6 minutes
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-gray-800">
+              Cactus & Succulent Care Tips
+            </h3>
+            <p class="mt-3 text-sm text-gray-500">
+              Cacti are succulents are easy care plants for any home or patio.
+            </p>
+            <a
+              href="#"
+              class="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-green-600"
+            >
+              Read More →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white">
+          <img
+            src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42"
+            class="h-52 w-full object-cover"
+          />
+          <div class="p-5">
+            <p class="text-xs text-green-600">
+              September 13 | Read in 2 minutes
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-gray-800">
+              Top 10 Succulents for Your Home
+            </h3>
+            <p class="mt-3 text-sm text-gray-500">
+              Best in hanging baskets. Prefers medium to high light.
+            </p>
+            <a
+              href="#"
+              class="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-green-600"
+            >
+              Read More →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white">
+          <img
+            src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+            class="h-52 w-full object-cover"
+          />
+          <div class="p-5">
+            <p class="text-xs text-green-600">
+              September 15 | Read in 3 minutes
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-gray-800">
+              Cacti & Succulent Care Tips
+            </h3>
+            <p class="mt-3 text-sm text-gray-500">
+              Cacti and succulents thrive in containers and because most are...
+            </p>
+            <a
+              href="#"
+              class="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-green-600"
+            >
+              Read More →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white">
+          <img
+            src="https://images.unsplash.com/photo-1463320726281-696a485928c7"
+            class="h-52 w-full object-cover"
+          />
+          <div class="p-5">
+            <p class="text-xs text-green-600">
+              September 15 | Read in 2 minutes
+            </p>
+            <h3 class="mt-2 text-lg font-semibold text-gray-800">
+              Best Houseplants Room By Room
+            </h3>
+            <p class="mt-3 text-sm text-gray-500">
+              The benefits of houseplants are endless. In addition to...
+            </p>
+            <a
+              href="#"
+              class="mt-4 inline-block text-sm font-medium text-gray-800 hover:text-green-600"
+            >
+              Read More →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES + NEWSLETTER ================= -->
+    <section class="bg-white px-4 py-16 md:px-20 container mx-auto">
+      <div class="grid gap-10 lg:grid-cols-4">
+        <!-- Feature 1 -->
+        <div class="text-center lg:text-left">
+          <div
+            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+          >
+            🌿
+          </div>
+          <h4 class="mt-4 font-semibold text-gray-800">Garden Care</h4>
+          <p class="mt-2 text-sm text-gray-500">
+            We are an online plant shop offering a wide range of cheap and
+            trendy plants.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="text-center lg:text-left">
+          <div
+            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+          >
+            🪴
+          </div>
+          <h4 class="mt-4 font-semibold text-gray-800">Plant Renovation</h4>
+          <p class="mt-2 text-sm text-gray-500">
+            We are an online plant shop offering a wide range of cheap and
+            trendy plants.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="text-center lg:text-left">
+          <div
+            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+          >
+            💧
+          </div>
+          <h4 class="mt-4 font-semibold text-gray-800">Watering Garden</h4>
+          <p class="mt-2 text-sm text-gray-500">
+            We are an online plant shop offering a wide range of cheap and
+            trendy plants.
+          </p>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="font-semibold text-gray-800">
+            Would you like to join newsletters?
+          </h4>
+
+          <div class="mt-4 flex">
+            <input
+              type="email"
+              placeholder="enter your email address..."
+              class="w-full border border-gray-200 px-4 py-2 text-sm focus:outline-none"
+            />
+            <button class="bg-green-600 px-6 text-white text-sm">Join</button>
+          </div>
+
+          <p class="mt-4 text-sm text-gray-500">
+            We usually post offers and challenges in newsletter. We’re your
+            online houseplant destination.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-green-50 px-4 py-6 md:px-20 container mx-auto">
+      <div
+        class="flex flex-col items-center justify-between gap-4 text-sm text-gray-600 md:flex-row"
+      >
+        <div class="font-semibold text-green-700">🌿 GREENS HOP</div>
+        <div>📍 70 West Buckingham Ave. Farmingdale, NY 11735</div>
+        <div>✉ contact@greenshop.com</div>
+        <div>📞 +88 01911 717 490</div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-white px-4 pt-16 md:px-20 container mx-auto"
+      id="footer"
+    ></footer>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="src/scripts/load-component.js"></script>
+  </body>
+</html>

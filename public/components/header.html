@@ -1,0 +1,57 @@
+<header
+  class="border-green-500/50 container mx-auto flex h-20 items-center justify-between border-b-[0.3px] bg-white/50 px-4"
+>
+  <a href="/" class="z-50">
+    <img src="src/assets/logo/Logo.svg" alt="" />
+  </a>
+
+  <nav class="nav">
+    <ul class="nav__list">
+      <li>
+        <a href="/home">Home</a>
+      </li>
+      <li>
+        <a href="/src/pages/product.html">Shop</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex items-center gap-6">
+    <button class="relative cursor-pointer">
+      <i class="fa-solid fa-cart-arrow-down text-green-600 text-2xl"></i>
+    </button>
+
+    <button
+      id="menu-btn"
+      class="md:hidden text-2xl text-green-600 focus:outline-none"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div
+  id="overlay"
+  class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm"
+></div>
+
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 z-999 h-full w-72 translate-x-full bg-white shadow-2xl transition-transform duration-300 md:hidden"
+>
+  <div class="flex items-center justify-between border-b p-5">
+    <span class="text-lg font-semibold text-green-600">Menu</span>
+    <button id="close-btn" class="text-2xl text-gray-600">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <ul class="flex flex-col gap-6 p-6 text-gray-700 text-lg">
+    <li>
+      <a href="/home" class="hover:text-green-600 transition">Home</a>
+    </li>
+    <li>
+      <a href="/shop" class="hover:text-green-600 transition">Shop</a>
+    </li>
+  </ul>
+</div>
