@@ -19,9 +19,9 @@
 
     <section class="bg-gray-50 px-4 py-10 md:px-20 container mx-auto">
       <div
-        class="relative flex flex-col items-center justify-between rounded-md p-8 md:flex-row md:p-16"
+        class="relative flex flex-col items-center justify-between rounded-md p-8 lg:flex-row lg:p-16"
       >
-        <div class="max-w-xl text-center md:text-left">
+        <div class="max-w-xl text-center lg:text-left">
           <p class="mb-4 text-sm uppercase tracking-widest text-gray-500">
             Welcome to GreenShop
           </p>
@@ -100,37 +100,19 @@
           </select>
         </div>
       </div>
-
-      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" id="home-products">
-        <!-- <div class="group relative pb-10 md:pb-15"> -->
-        <!--   <div class="relative overflow-hidden bg-gray-50 p-6"> -->
-        <!--     <img -->
-        <!--       src="src/assets/images/product-1.png" -->
-        <!--       class="w-full object-cover transition duration-300 group-hover:scale-105" -->
-        <!--     /> -->
-        <!--   </div> -->
-        <!--   <h3 class="mt-4 text-gray-700">Angel Wing Begonia</h3> -->
-        <!--   <p class="font-semibold text-green-600">$169.00</p> -->
-        <!---->
-        <!--   <button -->
-        <!--     class="absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 gap-4 opacity-100 bg-green-600 text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer" -->
-        <!--   > -->
-        <!--     Order now -->
-        <!--   </button> -->
-        <!-- </div> -->
-      </div>
-
-      <div class="mt-16 flex justify-end gap-3">
-        <button class="h-8 w-8 rounded bg-green-600 text-white">1</button>
-        <button class="h-8 w-8 rounded border text-gray-600">2</button>
-        <button class="h-8 w-8 rounded border text-gray-600">3</button>
-        <button class="h-8 w-8 rounded border text-gray-600">4</button>
-        <button class="h-8 w-8 rounded border text-gray-600">></button>
-      </div>
     </section>
-    <!-- ================= BLOG SECTION ================= -->
+    <section class="max-md:px-4 py-12 container mx-auto" id="products-section">
+      <div
+        class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3"
+        id="home-products"
+      ></div>
+
+      <div
+        id="pagination"
+        class="mt-20 flex justify-center items-center gap-2"
+      ></div>
+    </section>
     <section class="px-4 container mx-auto">
-      <!-- Title -->
       <div class="text-center">
         <h2 class="text-3xl font-bold text-gray-800">Our Blog Posts</h2>
         <p class="mt-4 text-gray-500">
@@ -139,9 +121,7 @@
         </p>
       </div>
 
-      <!-- Blog Grid -->
       <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Blog Card -->
         <div class="bg-white">
           <img
             src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
@@ -240,15 +220,13 @@
       </div>
     </section>
 
-    <!-- ================= FEATURES + NEWSLETTER ================= -->
     <section class="bg-white px-4 py-16 md:px-20 container mx-auto">
       <div class="grid gap-10 lg:grid-cols-4">
-        <!-- Feature 1 -->
         <div class="text-center lg:text-left">
           <div
-            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+            class="mx-auto h-16 w-16 rounded-full flex items-center justify-center lg:mx-0"
           >
-            🌿
+            <img src="src/assets/footer-image-1.svg" alt="" />
           </div>
           <h4 class="mt-4 font-semibold text-gray-800">Garden Care</h4>
           <p class="mt-2 text-sm text-gray-500">
@@ -257,12 +235,11 @@
           </p>
         </div>
 
-        <!-- Feature 2 -->
         <div class="text-center lg:text-left">
           <div
-            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+            class="mx-auto h-16 w-16 rounded-full flex items-center justify-center lg:mx-0"
           >
-            🪴
+            <img src="src/assets/footer-image-2.svg" alt="" />
           </div>
           <h4 class="mt-4 font-semibold text-gray-800">Plant Renovation</h4>
           <p class="mt-2 text-sm text-gray-500">
@@ -271,12 +248,11 @@
           </p>
         </div>
 
-        <!-- Feature 3 -->
         <div class="text-center lg:text-left">
           <div
-            class="mx-auto h-16 w-16 rounded-full bg-green-100 flex items-center justify-center lg:mx-0"
+            class="mx-auto h-16 w-16 rounded-full flex items-center justify-center lg:mx-0"
           >
-            💧
+            <img src="src/assets/footer-image-2.svg" alt="" />
           </div>
           <h4 class="mt-4 font-semibold text-gray-800">Watering Garden</h4>
           <p class="mt-2 text-sm text-gray-500">
@@ -285,7 +261,6 @@
           </p>
         </div>
 
-        <!-- Newsletter -->
         <div>
           <h4 class="font-semibold text-gray-800">
             Would you like to join newsletters?

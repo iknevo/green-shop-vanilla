@@ -1,5 +1,5 @@
 import { getProducts } from "./scripts/api";
-import { state } from "./state/state";
+import { state, addToCart } from "./state/state";
 
 export function mobileMenu() {
   const menuBtn = document.getElementById("menu-btn");
@@ -63,8 +63,13 @@ function updateProducts() {
   } else if (state.activeSort === "high") {
     result.sort((a, b) => b.price - a.price);
   }
+  const start = (state.currentPage - 1) * state.productsPerPage;
+  const end = start + state.productsPerPage;
 
-  renderProducts(result);
+  const paginatedProducts = result.slice(start, end);
+
+  renderProducts(paginatedProducts);
+  renderPagination(result.length);
 }
 
 function renderProducts(products) {
@@ -72,10 +77,11 @@ function renderProducts(products) {
   if (!container) return;
 
   container.innerHTML = products
-    .map(
-      (p) => `
+    .map((p) => {
+      const inCart = state.cart.some((item) => item.id === p.id);
+
+      return `
     <div class="group relative pb-10 md:pb-15 shadow-md rounded-sm overflow-hidden">
-      
       <div class="relative overflow-hidden p-6 aspect-square">
         <img
           src="${p.image}"
@@ -104,14 +110,85 @@ function renderProducts(products) {
       </div>
 
       <button
-        class="absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 bg-green-600 text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
+        class="cart__add absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 ${!inCart ? "bg-green-600" : "bg-red-600 pointer-events-none"} text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
+        data-id=${p.id}
       >
-        Order now
+      ${inCart ? "In Cart" : "Order now"}
       </button>
     </div>
-  `
-    )
+  `;
+    })
     .join("");
+
+  document.querySelectorAll(".cart__add").forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      const product = state.products.find((p) => p.id == id);
+
+      // addToCart(product);
+      window.location.href = `/product.html?slug=${product.slug}`;
+      updateProducts();
+    })
+  );
+}
+
+function renderPagination(totalProducts) {
+  const container = document.getElementById("pagination");
+  if (!container) return;
+
+  const totalPages = Math.ceil(totalProducts / state.productsPerPage);
+
+  if (totalPages <= 1) {
+    container.innerHTML = "";
+    return;
+  }
+
+  let buttons = "";
+
+  buttons += `
+    <button
+      class="pagination-btn"
+      data-page="${state.currentPage - 1}"
+      ${state.currentPage === 1 ? "disabled" : ""}
+    >
+      ‹
+    </button>
+  `;
+
+  for (let i = 1; i <= totalPages; i++) {
+    buttons += `
+      <button
+        class="pagination-btn ${
+          state.currentPage === i ? "pagination-active" : ""
+        }"
+        data-page="${i}"
+      >
+        ${i}
+      </button>
+    `;
+  }
+
+  buttons += `
+    <button
+      class="pagination-btn"
+      data-page="${state.currentPage + 1}"
+      ${state.currentPage === totalPages ? "disabled" : ""}
+    >
+      ›
+    </button>
+  `;
+
+  container.innerHTML = buttons;
+
+  container.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const page = Number(btn.dataset.page);
+      if (!page || page < 1 || page > totalPages) return;
+
+      state.currentPage = page;
+      updateProducts();
+    });
+  });
 }
 
 function initFilter() {
@@ -120,6 +197,7 @@ function initFilter() {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      state.currentPage = 1;
       buttons.forEach((b) =>
         b.classList.remove("border-b-2", "border-green-600", "text-green-600")
       );
@@ -127,6 +205,7 @@ function initFilter() {
       btn.classList.add("border-b-2", "border-green-600", "text-green-600");
 
       state.activeFilter = btn.dataset.filter;
+      state.currentPage = 1;
 
       updateProducts();
     });
@@ -143,7 +222,13 @@ function initSorting() {
   });
 }
 
+function initCart() {
+  state.cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // const inCart = cartItems.some((item) => item.id === p.id);
+}
+
 async function init() {
+  initCart();
   mobileMenu();
   initFilter();
   initSorting();

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 .nav {
   @apply hidden md:block;
   .nav__list {
@@ -26,6 +30,20 @@
       }
     }
   }
+}
+
+.pagination-btn {
+  @apply h-10 w-10 flex items-center justify-center rounded-full 
+  border border-gray-300 text-gray-600 
+  transition-all duration-200 hover:bg-green-600 hover:text-white hover:border-green-600;
+}
+
+.pagination-btn:disabled {
+  @apply opacity-40 cursor-not-allowed hover:bg-white hover:text-gray-600 hover:border-gray-300;
+}
+
+.pagination-active {
+  @apply bg-green-600 text-white border-green-600 shadow-md scale-110;
 }
 
 .loader {
