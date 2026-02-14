@@ -1,5 +1,5 @@
 import { getProducts } from "./scripts/api";
-import { state, addToCart } from "./state/state";
+import { state } from "./state/state";
 
 export function mobileMenu() {
   const menuBtn = document.getElementById("menu-btn");
@@ -82,6 +82,9 @@ function renderProducts(products) {
 
       return `
     <div class="group relative pb-10 md:pb-15 shadow-md rounded-sm overflow-hidden">
+  <div class="absolute top-3 z-99 -right-10 rotate-45 bg-green-600 text-white text-xs font-semibold px-10 py-1 shadow-md ${inCart ? "" : "hidden"}">
+    IN CART
+  </div>
       <div class="relative overflow-hidden p-6 aspect-square">
         <img
           src="${p.image}"
@@ -110,10 +113,10 @@ function renderProducts(products) {
       </div>
 
       <button
-        class="cart__add absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 ${!inCart ? "bg-green-600" : "bg-red-600 pointer-events-none"} text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
+        class="cart__add absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 ${!inCart ? "bg-green-600" : "bg-red-600"} text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
         data-id=${p.id}
       >
-      ${inCart ? "In Cart" : "Order now"}
+      ${inCart ? "Edit Cart" : "Order now"}
       </button>
     </div>
   `;
@@ -125,7 +128,6 @@ function renderProducts(products) {
       const id = e.target.dataset.id;
       const product = state.products.find((p) => p.id == id);
 
-      // addToCart(product);
       window.location.href = `/product.html?slug=${product.slug}`;
       updateProducts();
     })
