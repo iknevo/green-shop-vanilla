@@ -5,6 +5,8 @@ import { updateCartCount } from "./load-component";
 const searchParams = new URLSearchParams(window.location.search);
 const slug = searchParams.get("slug");
 
+let selectedQuantity = 1;
+
 async function display_product() {
   const container = document.getElementById("product-container");
   if (!container) return;
@@ -42,6 +44,10 @@ function renderProduct(product) {
   if (!container) return;
 
   const inCart = state.cart.some((item) => item.id === product.id);
+  const cartItem = state.cart.find((item) => item.id === product.id);
+  if (cartItem) {
+    selectedQuantity = cartItem.quantity;
+  }
 
   container.innerHTML = `
       <div class="max-w-7xl mx-auto">
@@ -107,15 +113,17 @@ function renderProduct(product) {
             <div class="flex flex-col sm:flex-row sm:items-center gap-6 mt-8">
               <div class="flex items-center gap-4">
                 <button
-                  class="qty-minus w-9 h-9 rounded-full bg-green-600 text-white text-lg"
+                  class="qty-btn w-9 h-9 rounded-full bg-green-600 text-white text-lg"
+                  data-type="minus"
                 >
                   −
                 </button>
 
-                <span class="text-lg font-semibold"> 1 </span>
+                <span class="text-lg font-semibold"> ${selectedQuantity} </span>
 
                 <button
-                  class="qty-plus w-9 h-9 rounded-full bg-green-600 text-white text-lg"
+                  class="qty-btn w-9 h-9 rounded-full bg-green-600 text-white text-lg"
+                  data-type="plus"
                 >
                   +
                 </button>
@@ -123,7 +131,7 @@ function renderProduct(product) {
 
               <button
                 data-type="${inCart ? "remove" : "add"}"
-                class="btn-add-cart cursor-pointer w-full sm:w-auto ${inCart ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"} text-white px-10 py-3 rounded-md font-semibold transition duration-300"
+                class="btn-add-cart cursor-pointer w-full sm:w-auto ${inCart ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"} text-white px-6 py-3 rounded-md font-semibold transition duration-300"
               >
                 ${inCart ? "Remove From Cart" : "Add To Cart"}
               </button>
@@ -153,12 +161,35 @@ function renderProduct(product) {
 
   document.querySelector(".btn-add-cart").addEventListener("click", (e) => {
     if (e.target.dataset.type === "add") {
-      addToCart({ ...product, quantity: 1 });
+      addToCart({ ...product, quantity: selectedQuantity });
     } else if (e.target.dataset.type === "remove") {
       removeFromCart(product);
     }
-    updateProduct();
+    renderProduct(product);
     updateCartCount();
+  });
+  document.querySelectorAll(".qty-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const { type } = e.target.dataset;
+
+      const cartItem = state.cart.find((p) => p.id === product.id);
+
+      if (cartItem) {
+        if (type === "plus") cartItem.quantity++;
+        if (type === "minus" && cartItem.quantity > 1) {
+          cartItem.quantity--;
+        }
+
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+      } else {
+        if (type === "plus") selectedQuantity++;
+        if (type === "minus" && selectedQuantity > 1) {
+          selectedQuantity--;
+        }
+      }
+      updateCartCount();
+      renderProduct(product);
+    });
   });
 }
 

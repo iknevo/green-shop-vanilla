@@ -15,7 +15,7 @@ export function updateCartCount() {
   }, 0);
 
   if (cartCountElement) {
-    cartCountElement.textContent = totalCount;
+    cartCountElement.textContent = state.cart.length;
 
     if (totalCount === 0) {
       cartCountElement.classList.add("hidden");
