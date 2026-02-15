@@ -3,7 +3,7 @@ export const state = {
   product: {},
   activeFilter: "all",
   activeSort: "default",
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
   currentPage: 1,
   productsPerPage: 6
 };

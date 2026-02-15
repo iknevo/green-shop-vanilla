@@ -224,17 +224,9 @@ function initSorting() {
   });
 }
 
-function initCart() {
-  state.cart = JSON.parse(localStorage.getItem("cart")) || [];
-  // const inCart = cartItems.some((item) => item.id === p.id);
-}
-
 async function init() {
-  initCart();
-  mobileMenu();
   initFilter();
   initSorting();
   await display_home_products();
 }
-
 init();

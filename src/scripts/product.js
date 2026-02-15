@@ -1,5 +1,6 @@
 import { addToCart, removeFromCart, state } from "../state/state";
 import { getProductBySlug } from "./api";
+import { updateCartCount } from "./load-component";
 
 const searchParams = new URLSearchParams(window.location.search);
 const slug = searchParams.get("slug");
@@ -151,13 +152,13 @@ function renderProduct(product) {
   `;
 
   document.querySelector(".btn-add-cart").addEventListener("click", (e) => {
-    console.log(e.target);
     if (e.target.dataset.type === "add") {
       addToCart({ ...product, quantity: 1 });
     } else if (e.target.dataset.type === "remove") {
       removeFromCart(product);
     }
     updateProduct();
+    updateCartCount();
   });
 }
 
