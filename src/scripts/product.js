@@ -1,4 +1,9 @@
-import { addToCart, removeFromCart, state } from "../state/state";
+import {
+  addToCart,
+  handleQuantityChange,
+  removeFromCart,
+  state
+} from "../state/state";
 import { getProductBySlug } from "./api";
 import { updateCartCount } from "./load-component";
 
@@ -35,7 +40,6 @@ async function display_product() {
 
 function updateProduct() {
   const product = state.product;
-
   renderProduct(product);
 }
 
@@ -168,25 +172,12 @@ function renderProduct(product) {
     renderProduct(product);
     updateCartCount();
   });
+
   document.querySelectorAll(".qty-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const { type } = e.target.dataset;
 
-      const cartItem = state.cart.find((p) => p.id === product.id);
-
-      if (cartItem) {
-        if (type === "plus") cartItem.quantity++;
-        if (type === "minus" && cartItem.quantity > 1) {
-          cartItem.quantity--;
-        }
-
-        localStorage.setItem("cart", JSON.stringify(state.cart));
-      } else {
-        if (type === "plus") selectedQuantity++;
-        if (type === "minus" && selectedQuantity > 1) {
-          selectedQuantity--;
-        }
-      }
+      handleQuantityChange(type, product);
       updateCartCount();
       renderProduct(product);
     });

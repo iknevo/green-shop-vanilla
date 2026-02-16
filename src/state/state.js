@@ -21,3 +21,33 @@ export function removeFromCart(product) {
   state.cart.splice(itemIndex, 1);
   localStorage.setItem("cart", JSON.stringify(state.cart));
 }
+
+export function clearCart() {
+  state.cart = [];
+  localStorage.setItem("cart", JSON.stringify(state.cart));
+}
+
+export function handleQuantityChange(type, product) {
+  const cartItem = state.cart.find((p) => p.id === product.id);
+
+  if (cartItem) {
+    if (type === "plus") {
+      cartItem.quantity++;
+    }
+
+    if (type === "minus" && cartItem.quantity > 1) {
+      cartItem.quantity--;
+    }
+
+    cartItem.totalPrice = cartItem.quantity * cartItem.price;
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  } else {
+    if (type === "plus") {
+      selectedQuantity++;
+    }
+
+    if (type === "minus" && selectedQuantity > 1) {
+      selectedQuantity--;
+    }
+  }
+}
