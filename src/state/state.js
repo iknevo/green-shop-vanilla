@@ -9,7 +9,10 @@ export const state = {
 };
 
 export function addToCart(product) {
-  state.cart = [...state.cart, { ...product }];
+  state.cart = [
+    ...state.cart,
+    { ...product, totalPrice: product.price * product.quantity }
+  ];
   localStorage.setItem("cart", JSON.stringify(state.cart));
 }
 

@@ -113,7 +113,7 @@ function renderProducts(products) {
       </div>
 
       <button
-        class="cart__add absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 ${!inCart ? "bg-green-600" : "bg-red-600"} text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
+        class="cart__add absolute bottom-0 left-1/2 -translate-x-1/2 md:opacity-0 md:translate-y-6 opacity-100 ${!inCart ? "bg-green-600" : "bg-green-800"} text-white w-full text-center py-1 md:py-3 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 block rounded-sm cursor-pointer"
         data-id=${p.id}
       >
       ${inCart ? "Edit Cart" : "Order now"}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Cart</title>
+  </head>
+
+  <body class="bg-gray-50">
+    <section class="px-4 md:px-20" id="header"></section>
+    <section class="container mx-auto px-4 py-10" id="cart-container">
+      <!-- <div class="mb-10 text-gray-600 text-sm"> -->
+      <!--   <span class="font-semibold text-black">Home</span> -->
+      <!--   <span> / Shop / Shopping Cart</span> -->
+      <!-- </div> -->
+      <!---->
+      <!-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-10"> -->
+      <!--   <div class="lg:col-span-2"> -->
+      <!--     <div -->
+      <!--       class="hidden md:grid grid-cols-4 font-semibold text-gray-700 border-b pb-4 mb-6" -->
+      <!--     > -->
+      <!--       <div>Products</div> -->
+      <!--       <div>Price</div> -->
+      <!--       <div>Quantity</div> -->
+      <!--       <div>Total</div> -->
+      <!--     </div> -->
+      <!---->
+      <!--     <div -->
+      <!--       class="grid grid-cols-1 md:grid-cols-4 items-center bg-gray-50 p-6 rounded-md gap-6" -->
+      <!--     > -->
+      <!--       <div class="flex items-center gap-5"> -->
+      <!--         <img -->
+      <!--           src="src/assets/products/product-1.png" -->
+      <!--           class="w-20 h-20 object-contain" -->
+      <!--         /> -->
+      <!--         <div> -->
+      <!--           <h3 class="font-semibold text-lg">Begonia</h3> -->
+      <!--           <p class="text-sm text-gray-500">SKU-1468651566</p> -->
+      <!--         </div> -->
+      <!--       </div> -->
+      <!---->
+      <!--       <div class="text-gray-700 font-medium">$75.37</div> -->
+      <!---->
+      <!--       <div class="flex items-center gap-4"> -->
+      <!--         <button -->
+      <!--           class="w-8 h-8 flex items-center justify-center bg-green-600 text-white rounded-full" -->
+      <!--         > -->
+      <!--           - -->
+      <!--         </button> -->
+      <!--         <span class="font-medium">1</span> -->
+      <!--         <button -->
+      <!--           class="w-8 h-8 flex items-center justify-center bg-green-600 text-white rounded-full" -->
+      <!--         > -->
+      <!--           + -->
+      <!--         </button> -->
+      <!--       </div> -->
+      <!---->
+      <!--       <div class="flex items-center justify-between"> -->
+      <!--         <span class="font-semibold text-gray-700">$75.37</span> -->
+      <!--         <button class="text-red-600 text-xl"> -->
+      <!--           <i class="fa-regular fa-trash-can"></i> -->
+      <!--         </button> -->
+      <!--       </div> -->
+      <!--     </div> -->
+      <!--     <div class="flex justify-end mt-6"> -->
+      <!--       <button class="bg-red-600 text-white px-5 py-2 rounded-md"> -->
+      <!--         Clear Cart -->
+      <!--       </button> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!---->
+      <!--   <div class="border p-6 rounded-md h-fit"> -->
+      <!--     <h2 class="text-lg font-semibold mb-6">Cart Totals</h2> -->
+      <!---->
+      <!--     <div class="mb-6"> -->
+      <!--       <label class="block mb-2 text-gray-600">Coupon</label> -->
+      <!--       <div class="flex"> -->
+      <!--         <input -->
+      <!--           type="text" -->
+      <!--           placeholder="Enter your coupon ..." -->
+      <!--           class="flex-1 border border-gray-300 px-4 py-2 rounded-l-md outline-none focus:border-green-600" -->
+      <!--         /> -->
+      <!--         <button class="bg-green-600 text-white px-6 rounded-r-md"> -->
+      <!--           Apply -->
+      <!--         </button> -->
+      <!--       </div> -->
+      <!--     </div> -->
+      <!---->
+      <!--     <div class="space-y-4 text-gray-700"> -->
+      <!--       <div class="flex justify-between"> -->
+      <!--         <span>Subtotal</span> -->
+      <!--         <span>$75.37</span> -->
+      <!--       </div> -->
+      <!---->
+      <!--       <div class="flex justify-between"> -->
+      <!--         <span>Shipping</span> -->
+      <!--         <span>$30.00</span> -->
+      <!--       </div> -->
+      <!---->
+      <!--       <div class="flex justify-between"> -->
+      <!--         <span>Coupon Discount</span> -->
+      <!--         <span>(-) $0.00</span> -->
+      <!--       </div> -->
+      <!---->
+      <!--       <hr /> -->
+      <!---->
+      <!--       <div class="flex justify-between font-semibold text-lg"> -->
+      <!--         <span>Total</span> -->
+      <!--         <span class="text-green-600">$105.37</span> -->
+      <!--       </div> -->
+      <!--     </div> -->
+      <!---->
+      <!--     <button -->
+      <!--       class="w-full bg-green-600 text-white py-3 rounded-md mt-6 text-lg font-medium" -->
+      <!--     > -->
+      <!--       Proceed To Checkout -->
+      <!--     </button> -->
+      <!---->
+      <!--     <div class="text-center mt-4"> -->
+      <!--       <a href="/shop" class="text-green-600 font-medium"> -->
+      <!--         Continue Shopping -->
+      <!--       </a> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+    </section>
+
+    <footer class="bg-white px-4 md:px-20 pt-16" id="footer"></footer>
+
+    <script type="module" src="src/scripts/load-component.js"></script>
+    <script type="module" src="src/scripts/cart.js"></script>
+  </body>
+</html>

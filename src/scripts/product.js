@@ -131,7 +131,7 @@ function renderProduct(product) {
 
               <button
                 data-type="${inCart ? "remove" : "add"}"
-                class="btn-add-cart cursor-pointer w-full sm:w-auto ${inCart ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"} text-white px-6 py-3 rounded-md font-semibold transition duration-300"
+                class="btn-add-cart cursor-pointer w-full sm:w-auto ${inCart ? "bg-red-800 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"} text-white px-6 py-3 rounded-md font-semibold transition duration-300"
               >
                 ${inCart ? "Remove From Cart" : "Add To Cart"}
               </button>
