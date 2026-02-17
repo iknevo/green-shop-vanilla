@@ -200,7 +200,7 @@ function renderCart(cart) {
 
                 <div class="flex items-center gap-4">
                   <button
-                    class="qty-btn w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300"
+                    class="qty-btn w-9 h-9 rounded-full ${el.quantity === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300 "}"
                     data-type="minus"
                     data-id="${el.id}"
                   >
