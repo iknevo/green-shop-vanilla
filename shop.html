@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Cart</title>
+  </head>
+
+  <body class="bg-gray-50">
+    <section class="container" id="header"></section>
+    <section class="container py-10 md:py-16">
+      <div
+        class="mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+      >
+        <div class="flex items-center gap-8 text-gray-600 font-medium">
+          <button
+            class="product-filter border-b-2 border-green-600 pb-1 text-green-600"
+            data-filter="all"
+          >
+            All Plants
+          </button>
+          <button
+            class="product-filter hover:text-green-600 transition pb-1"
+            data-filter="new"
+          >
+            New Arrivals
+          </button>
+          <button
+            class="product-filter hover:text-green-600 transition pb-1"
+            data-filter="sale"
+          >
+            Sale
+          </button>
+        </div>
+
+        <div class="text-sm text-gray-500">
+          Sort by:
+          <select
+            id="product-sort-select"
+            class="ml-2 border-none bg-transparent text-gray-700 focus:outline-none"
+          >
+            <option value="default">Default sorting</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+    <section class="max-md:px-4 py-12 container mx-auto" id="products-section">
+      <div
+        class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3"
+        id="home-products"
+      ></div>
+
+      <div
+        id="pagination"
+        class="mt-20 flex justify-center items-center gap-2"
+      ></div>
+    </section>
+
+    <footer class="bg-white pt-16 container" id="footer"></footer>
+
+    <script type="module" src="src/scripts/load-component.js"></script>
+    <script type="module" src="src/scripts/shop.js"></script>
+  </body>
+</html>

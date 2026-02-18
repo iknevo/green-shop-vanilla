@@ -114,7 +114,7 @@ function renderProduct(product) {
               </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row sm:items-center gap-6 mt-8">
+            <div class="flex flex-col items-center sm:flex-row sm:items-center gap-6 mt-8">
               <div class="flex items-center gap-4">
                 <button
                   class="qty-btn w-9 h-9 rounded-full text-white text-lg ${selectedQuantity === 1 ? "cursor-not-allowed bg-green-800" : "bg-green-600 "}"

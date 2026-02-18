@@ -54,52 +54,10 @@ function renderCart(cart) {
               <span>Total</span>
             </div>
             <div class="cart-products flex flex-col gap-2">
-              <!-- <div -->
-              <!--   class="grid grid-cols-1 md:grid-cols-[3fr_1fr_1fr_1fr] items-center gap-3 bg-gray-100 py-2 px-4" -->
-              <!-- > -->
-              <!--   <div class="flex items-center gap-5"> -->
-              <!--     <img -->
-              <!--       src="https://via.placeholder.com/100" -->
-              <!--       class="w-20 h-20 object-contain rounded-lg bg-gray-50" -->
-              <!--     /> -->
-              <!--     <div> -->
-              <!--       <h3 class="text-lg font-semibold text-gray-800"> -->
-              <!--         Begonia Plant -->
-              <!--       </h3> -->
-              <!--       <p class="text-sm text-gray-400">SKU-123456</p> -->
-              <!--     </div> -->
-              <!--   </div> -->
-              <!---->
-              <!--   <div class="text-gray-700 font-semibold text-lg">$75.00</div> -->
-              <!---->
-              <!--   <div class="flex items-center gap-4"> -->
-              <!--     <button -->
-              <!--       class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300" -->
-              <!--     > -->
-              <!--       <i class="fa-solid fa-minus"></i> -->
-              <!--     </button> -->
-              <!--     <span class="text-lg font-semibold">1</span> -->
-              <!--     <button -->
-              <!--       class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300" -->
-              <!--     > -->
-              <!--       <i class="fa-solid fa-plus"></i> -->
-              <!--     </button> -->
-              <!--   </div> -->
-              <!---->
-              <!--   <div class="flex items-center gap-4"> -->
-              <!--     <div class="text-lg font-semibold text-gray-800">$75.00</div> -->
-              <!---->
-              <!--     <button -->
-              <!--       class="text-red-500 hover:text-white hover:bg-red-500 cursor-pointer transition-all text-sm flex items-center justify-center h-10 w-10 rounded-full bg-gray-200" -->
-              <!--     > -->
-              <!--       <i class="fa-regular fa-trash-can"></i> -->
-              <!--     </button> -->
-              <!--   </div> -->
-              <!-- </div> -->
             </div>
 
             <button
-              class="btn-clear-cart self-end rounded-lg bg-red-700 px-6 py-3 font-semibold text-white hover:bg-red-800 transition"
+              class="btn-clear-cart self-end rounded-lg bg-red-700 px-6 py-3 font-semibold text-white hover:bg-red-800 transition ${cart.length > 0 ? "" : "hidden"}"
             >
               Clear Cart
             </button>
@@ -123,11 +81,6 @@ function renderCart(cart) {
                   placeholder="Enter your coupon ..."
                   class="flex-1 p-4 focus:outline-none"
                 />
-                <button
-                  class="bg-green-600 px-8 text-white font-bold hover:bg-green-700 transition"
-                >
-                  Apply
-                </button>
               </div>
             </div>
 
@@ -160,11 +113,11 @@ function renderCart(cart) {
                 <button
                   class="rounded-lg bg-green-600 py-4 font-semibold text-white hover:bg-green-700 transition"
                 >
-                  Proceed To Checkout
+                  Pay now
                 </button>
 
                 <a
-                  href="/shop"
+                  href="/shop.html"
                   class="text-lg font-semibold text-green-600 hover:underline"
                 >
                   Continue Shopping
@@ -175,61 +128,92 @@ function renderCart(cart) {
         </div>
       </section>
   `;
-  cart.forEach((el) => {
-    document.querySelector(".cart-products").insertAdjacentHTML(
-      "beforeend",
-      `
+  if (cart.length === 0)
+    document.querySelector(".cart-products").innerHTML = `
+<div class="text-center">
+  <h2 class="text-gray-800 md:text-2xl font-semibold mb-5">Your cart is empty, start by adding some products to your cart.</h2>
+  <a href="/shop.html" class="text-lg font-semibold text-green-600 hover:underline">Got to shop.</a>
+</div>
 
-              <div
-                class="grid grid-cols-1 md:grid-cols-[3fr_1fr_1fr_1fr] items-center gap-3 border border-gray-200 py-2 px-4 rounded-md"
-              >
-                <div class="flex items-center gap-5">
-                  <img
-                    src="${el.image}"
-                    class="w-20 h-20 object-contain rounded-lg"
-                  />
-                  <div>
-                    <h3 class="text-lg font-semibold text-gray-800">
-                      ${el.name}
-                    </h3>
-                    <p class="text-sm text-gray-400">${el.sku}</p>
-                  </div>
-                </div>
+`;
+  cart.length > 0 &&
+    cart.forEach((el) => {
+      document.querySelector(".cart-products").insertAdjacentHTML(
+        "beforeend",
+        `
+<div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-4">
 
-                <div class="text-gray-700 font-semibold text-lg">$${el.price}</div>
+  <div class="flex gap-4">
+    <img
+      src="${el.image}"
+      class="w-24 h-24 object-contain rounded-lg bg-gray-100 p-2"
+    />
+    <div class="flex flex-col justify-between flex-1">
+      <div>
+        <h3 class="text-base md:text-lg font-semibold text-gray-800">
+          ${el.name}
+        </h3>
+        <p class="text-xs text-gray-400">${el.sku}</p>
+      </div>
 
-                <div class="flex items-center gap-4">
-                  <button
-                    class="qty-btn w-9 h-9 rounded-full ${el.quantity === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300 "}"
-                    data-type="minus"
-                    data-id="${el.id}"
-                  >
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <span class="text-lg font-semibold">${el.quantity}</span>
-                  <button
-                    class="qty-btn w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300"
-                    data-type="plus"
-                    data-id="${el.id}"
-                  >
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
-                </div>
+      <div class="text-gray-800 font-semibold text-lg md:hidden">
+        $${el.price}
+      </div>
+    </div>
+  </div>
 
-                <div class="flex items-center gap-4">
-                  <div class="text-lg font-semibold text-gray-800">$${el.totalPrice}</div>
+  <div class="flex items-center justify-between">
 
-                  <button
-                    class="btn-remove-item text-red-500 hover:text-white hover:bg-red-500 cursor-pointer transition-all text-sm flex items-center justify-center h-10 w-10 rounded-full bg-gray-200"
-                    data-id="${el.id}"
-                  >
-                    <i class="fa-regular fa-trash-can"></i>
-                  </button>
-                </div>
-              </div>
+    <div class="hidden md:block text-gray-700 font-semibold text-lg">
+      $${el.price}
+    </div>
+
+    <div class="flex items-center gap-4 px-4 py-2 rounded-full">
+      <button
+        class="qty-btn w-10 h-10 rounded-full ${
+          el.quantity === 1
+            ? "bg-gray-500 cursor-not-allowed"
+            : "bg-gray-200 hover:bg-gray-400"
+        }"
+        data-type="minus"
+        data-id="${el.id}"
+      >
+        <i class="fa-solid fa-minus"></i>
+      </button>
+
+      <span class="text-lg font-semibold min-w-4 text-center">
+        ${el.quantity}
+      </span>
+
+      <button
+        class="qty-btn w-10 h-10 rounded-full hover:bg-gray-400 bg-gray-200 transition-all cursor-pointer"
+        data-type="plus"
+        data-id="${el.id}"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between border-t pt-3">
+
+    <div class="text-lg font-bold text-gray-900">
+      Total: $${el.totalPrice}
+    </div>
+
+    <button
+      class="btn-remove-item flex items-center gap-2 text-red-500 hover:bg-red-500 hover:text-white transition-all px-4 py-2 rounded-full bg-gray-100"
+      data-id="${el.id}"
+    >
+      <i class="fa-regular fa-trash-can"></i>
+      <span class="hidden sm:inline">Remove</span>
+    </button>
+  </div>
+
+</div>
 `
-    );
-  });
+      );
+    });
 
   document.querySelectorAll(".qty-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
