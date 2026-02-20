@@ -6,6 +6,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         product: "product.html",
+        shop: "shop.html",
         cart: "cart.html",
         login: "login.html"
       }
