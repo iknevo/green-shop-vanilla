@@ -70,7 +70,7 @@ function renderProduct(product) {
             class="bg-white rounded-xl shadow-sm p-6 md:p-10 flex items-center justify-center"
           >
             <img
-              src="${product.image}"
+              src="/${product.image}"
               alt="ZZ Plant"
               class="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain"
             />

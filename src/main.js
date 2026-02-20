@@ -87,7 +87,7 @@ function renderProducts(products) {
   </div>
       <div class="relative overflow-hidden p-6 aspect-square">
         <img
-          src="${p.image}"
+          src="/${p.image}"
           class="w-full h-full object-contain transition duration-300 group-hover:scale-105"
         />
       </div>

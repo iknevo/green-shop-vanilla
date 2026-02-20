@@ -145,7 +145,7 @@ function renderCart(cart) {
 
   <div class="flex gap-4">
     <img
-      src="${el.image}"
+      src="/${el.image}"
       class="w-24 h-24 object-contain rounded-lg bg-gray-100 p-2"
     />
     <div class="flex flex-col justify-between flex-1">
