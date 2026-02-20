@@ -42,7 +42,7 @@ function renderCart(cart) {
         <span> / Shop / Shopping Cart</span>
       </div>
 
-      <section class="container mx-auto px-4 py-16">
+      <section class="container mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12">
           <div class="flex flex-col gap-8">
             <div
@@ -195,7 +195,7 @@ function renderCart(cart) {
     </div>
   </div>
 
-  <div class="flex items-center justify-between border-t pt-3">
+  <div class="flex items-center justify-between border-t border-gray-300 pt-3">
 
     <div class="text-lg font-bold text-gray-900">
       Total: $${el.totalPrice}

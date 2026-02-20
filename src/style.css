@@ -8,6 +8,10 @@ html {
   @apply px-4 md:px-20 mx-auto;
 }
 
+.slider {
+  height: clamp(600px, 100vh, 600px);
+}
+
 .nav {
   @apply hidden md:block;
   .nav__list {
